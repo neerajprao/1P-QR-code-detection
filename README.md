@@ -1,110 +1,149 @@
-# ===================================================================
-# YOLOv8 QR Code Detection Project - Complete Setup and Execution Guide
-# ===================================================================
-# This block contains all commands and file structure outlines for project setup,
-# configuration, training, and inference.
+# YOLOv8 QR Code Detection Project
 
-# 1. SETUP AND INSTALLATION
+This project implements **multi-QR code detection** using [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) on medicine packs.  
+The pipeline covers dataset setup, training, evaluation, and inference with visualization and JSON submission file generation.
 
-# 1.1. Directory Setup (Run these commands in your desired project parent directory)
-echo "Creating project directory and required subfolders..."
-mkdir -p yolov8-qr-detection-project/data/test_images
-mkdir -p yolov8-qr-detection-project/src/models
-cd yolov8-qr-detection-project
+---
 
-# Create placeholder files (must be filled with Python code provided later)
-touch train.py evaluate.py visualize.py requirements.txt
+## 📂 Project Structure
 
-# 1.2. requirements.txt Content
-echo "ultralytics" > requirements.txt
-echo "roboflow" >> requirements.txt
-echo "Pillow" >> requirements.txt
-echo "numpy" >> requirements.txt
-echo "opencv-python-headless" >> requirements.txt
-echo "tqdm" >> requirements.txt
-echo "Generated requirements.txt"
+```
+yolov8-qr-detection-project/
+│── data/
+│   ├── test_images/                # Test images for inference
+│   ├── medicine_qr_codes-1/        # Roboflow dataset (train/val split)
+│   │   ├── data.yaml
+│   │   ├── README.dataset.txt
+│   │   └── README.roboflow.txt
+│   └── outputs/
+│       ├── submission_detection_1.json
+│       └── visualizations/
+│
+│── runs/detect/                    # YOLOv8 run logs and weights
+│
+│── src/
+│   ├── datasets/                   # Train/val/test splits
+│   ├── models/                     # Saved model weights
+│   │   ├── best.pt
+│   │   └── last.pt
+│   ├── train.py
+│   ├── evaluate.py
+│   ├── visualize.py
+│
+│── requirements.txt
+│── README.md
+```
 
-# 1.3. Create and Activate Virtual Environment
-echo "Creating and activating virtual environment 'qr'..."
-python -m venv qr
+---
 
-# Activation Command (macOS/Linux):
-# source qr/bin/activate
-# Activation Command (Windows Command Prompt):
-# qr\Scripts\activate.bat
+## ⚙️ Setup & Installation
 
-# NOTE: EXECUTE THE APPROPRIATE ACTIVATION COMMAND MANUALLY BEFORE PROCEEDING!
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/yolov8-qr-detection-project.git
+   cd yolov8-qr-detection-project
+   ```
 
-# 1.4. Install Dependencies (Execute after activating environment)
-echo "Installing dependencies (Requires 'qr' environment active)..."
-# (qr) pip install -r requirements.txt
-# REM UNCOMMENT AND RUN THE LINE ABOVE AFTER ACTIVATION
+2. **Create virtual environment:**
+   ```bash
+   python -m venv qr
+   ```
 
-# 2. CRITICAL: FILE MODIFICATION INSTRUCTIONS
-echo "!!! CRITICAL: MANUAL FILE MODIFICATION REQUIRED !!!"
-echo "You MUST replace the placeholder paths and API key in the files below."
+   - Activate (Linux/Mac):
+     ```bash
+     source qr/bin/activate
+     ```
+   - Activate (Windows):
+     ```bash
+     qr\Scripts\activate.bat
+     ```
 
-# 2.1. train.py Content (Placeholder Structure)
-# REM REPLACE THE CONTENT OF train.py WITH THE FOLLOWING:
-: '
-# train.py (Configuration Section - MUST BE MODIFIED)
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-# ======================= CONFIGURATION START =======================
-MODEL_SAVE_ROOT = "/path/to/your/absolute/project/src/models" # <-- UPDATE THIS PATH
-ROBOFLOW_API_KEY = "YOUR_ROBOFLOW_API_KEY_HERE" # <-- UPDATE THIS KEY
-ROBOFLOW_PROJECT_NAME = "your-roboflow-project-name" # <-- UPDATE THIS
-ROBOFLOW_VERSION_NUMBER = 1 # <-- UPDATE THIS
-# ======================== CONFIGURATION END ========================
-# from ultralytics import YOLO; import roboflow; 
-# ... [rest of the training logic]
-'
+---
 
-# 2.2. evaluate.py Content (Placeholder Structure)
-# REM REPLACE THE CONTENT OF evaluate.py WITH THE FOLLOWING:
-: '
-# evaluate.py (Configuration Section - MUST BE MODIFIED)
+## 📦 Dependencies (`requirements.txt`)
 
-# ======================= CONFIGURATION START =======================
-MODEL_PATH = "/path/to/your/absolute/project/src/models/qr_train_custom_colab/weights/best.pt" # <-- UPDATE THIS PATH
-DATA_YAML_PATH = "/path/to/your/roboflow/dataset/data.yaml" # <-- UPDATE THIS PATH
-# ======================== CONFIGURATION END ========================
-# from ultralytics import YOLO; 
-# ... [rest of the evaluation logic]
-'
+```
+ultralytics
+roboflow
+Pillow
+numpy
+opencv-python-headless
+tqdm
+```
 
-# 2.3. visualize.py Content (Placeholder Structure)
-# REM REPLACE THE CONTENT OF visualize.py WITH THE FOLLOWING:
-: '
-# visualize.py (Configuration Section - MUST BE MODIFIED)
+---
 
-# ======================= CONFIGURATION START =======================
-MODEL_PATH = "/path/to/your/absolute/project/src/models/qr_train_custom_colab/weights/best.pt" # <-- UPDATE THIS PATH
-INPUT_DIR = "/path/to/your/absolute/project/data/test_images" # <-- UPDATE THIS PATH
-# ======================== CONFIGURATION END ========================
-# from ultralytics import YOLO; import os; import json;
-# ... [rest of the inference and JSON generation logic]
-'
+## 🚀 Training the Model
 
-# 3. EXECUTION STEPS (Run these commands after activation and file modification)
+Update **`train.py`** configuration before running:
 
-# 3.1. Build (Train the Model)
-echo "Starting model training..."
-# (qr) python train.py
-# REM UNCOMMENT AND RUN THE LINE ABOVE
+```python
+MODEL_SAVE_ROOT = "src/models"
+ROBOFLOW_API_KEY = "YOUR_API_KEY"
+ROBOFLOW_PROJECT_NAME = "medicine_qr_codes"
+ROBOFLOW_VERSION_NUMBER = 1
+```
 
-# Expected Output: Final weights (best.pt) saved to the configured MODEL_SAVE_ROOT.
+Then train:
+```bash
+python src/train.py
+```
 
-# 3.2. Run Inference and Reproduce Output
-echo "Starting inference and JSON generation..."
-# (qr) python visualize.py
-# REM UNCOMMENT AND RUN THE LINE ABOVE
+✅ Output: `best.pt` and `last.pt` saved under `src/models/`.
 
-# Expected Output: 'outputs/' folder created with submission_detection_1.json and visualizations/.
+---
 
-# 3.3. Optional: Evaluation (Self-Check)
-echo "Starting model evaluation..."
-# (qr) python evaluate.py
-# REM UNCOMMENT AND RUN THE LINE ABOVE
+## 📊 Evaluation
 
-echo "Project setup and execution steps complete."
-# REM Remember to run the actual Python files after creating their content!# 1P-QR-code-detection
+Update **`evaluate.py`** paths:
+
+```python
+MODEL_PATH = "src/models/best.pt"
+DATA_YAML_PATH = "data/medicine_qr_codes-1/data.yaml"
+```
+
+Run evaluation:
+```bash
+python src/evaluate.py
+```
+
+---
+
+## 👁️ Inference & Visualization
+
+Update **`visualize.py`** configuration:
+
+```python
+MODEL_PATH = "src/models/best.pt"
+INPUT_DIR = "data/test_images"
+```
+
+Run inference:
+```bash
+python src/visualize.py
+```
+
+✅ Output:
+- Bounding box predictions
+- `submission_detection_1.json` file under `outputs/`
+- Visualization images under `outputs/visualizations/`
+
+---
+
+## 📌 Notes
+
+- Ensure correct **absolute paths** are set inside `train.py`, `evaluate.py`, and `visualize.py`.
+- Dataset is managed via [Roboflow](https://roboflow.com/).
+- Supports multiple QR codes per image.
+
+---
+
+## 🏆 Hackathon Problem Statement
+
+This project solves the challenge of **multi-QR code detection on medicine packs**.  
+Most medicine packs have more than one QR code (manufacturer, batch number, distributor, regulator). The model detects and outputs all present QR codes per image.
