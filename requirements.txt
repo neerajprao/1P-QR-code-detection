@@ -1,0 +1,19 @@
+# requirements.txt
+
+# Core libraries for object detection and machine learning
+ultralytics
+# Used for downloading the dataset
+roboflow
+# Used by Roboflow, Ultralytics, and general data handling
+PyYAML
+# Used for command-line argument parsing and JSON output
+argparse # Note: This is usually built-in to Python, but harmless to list if you want to be explicit.
+# Used for numerical operations by PyTorch and other libs
+numpy
+# Used for file path manipulation (Path objects in your scripts)
+pathlib # Note: This is built-in to Python 3.4+, but useful for documentation.
+
+# Note: TensorFlow/Keras and OpenCV (cv2) are often necessary for inference, 
+# and PyTorch is the underlying framework for Ultralytics YOLOv8. 
+# Installing 'ultralytics' typically handles most of these dependencies automatically, 
+# including torch and torchvision. 

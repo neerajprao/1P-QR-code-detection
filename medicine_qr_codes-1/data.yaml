@@ -1,0 +1,12 @@
+names:
+- qr_code
+nc: 1
+roboflow:
+  license: CC BY 4.0
+  project: medicine_qr_codes-mmb4l
+  url: https://universe.roboflow.com/test1-umekt/medicine_qr_codes-mmb4l/dataset/1
+  version: 1
+  workspace: test1-umekt
+test: ../test/images
+train: ../train/images
+val: ../valid/images
