@@ -5,7 +5,7 @@ The pipeline covers dataset setup, training, evaluation, and inference with visu
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 yolov8-qr-detection-project/
@@ -36,7 +36,7 @@ yolov8-qr-detection-project/
 
 ---
 
-## ⚙️ Setup & Installation
+##  Setup & Installation
 
 1. **Clone the repository:**
    ```bash
@@ -65,7 +65,7 @@ yolov8-qr-detection-project/
 
 ---
 
-## 📦 Dependencies (`requirements.txt`)
+##  Dependencies (`requirements.txt`)
 
 ```
 ultralytics
@@ -78,7 +78,7 @@ tqdm
 
 ---
 
-## 🚀 Training the Model
+##  Training the Model
 
 Update **`train.py`** configuration before running:
 
@@ -94,7 +94,7 @@ Then train:
 python src/train.py
 ```
 
-✅ Output: `best.pt` and `last.pt` saved under `src/models/`.
+ Output: `best.pt` and `last.pt` saved under `src/models/`.
 
 ---
 
@@ -114,7 +114,7 @@ python src/evaluate.py
 
 ---
 
-## 👁️ Inference & Visualization
+##  Inference & Visualization
 
 Update **`visualize.py`** configuration:
 
@@ -128,14 +128,14 @@ Run inference:
 python src/visualize.py
 ```
 
-✅ Output:
+ Output:
 - Bounding box predictions
 - `submission_detection_1.json` file under `outputs/`
 - Visualization images under `outputs/visualizations/`
 
 ---
 
-## 📌 Notes
+##  Notes
 
 - Ensure correct **absolute paths** are set inside `train.py`, `evaluate.py`, and `visualize.py`.
 - Dataset is managed via [Roboflow](https://roboflow.com/).
@@ -143,7 +143,7 @@ python src/visualize.py
 
 ---
 
-## 🏆 Hackathon Problem Statement
+##  Hackathon Problem Statement
 
 This project solves the challenge of **multi-QR code detection on medicine packs**.  
 Most medicine packs have more than one QR code (manufacturer, batch number, distributor, regulator). The model detects and outputs all present QR codes per image.
