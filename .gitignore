@@ -10,4 +10,4 @@ git rm -r --cached .
 git add .
 
 # 4. Commit the cleaned index and the .gitignore file:
-git commit -m "Cleaned repository of dependency files and added .gitignore"
+git commit -m "Cleaned repository of dependency files and added .gitignore"qr/

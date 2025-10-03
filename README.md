@@ -107,4 +107,4 @@ echo "Starting model evaluation..."
 # REM UNCOMMENT AND RUN THE LINE ABOVE
 
 echo "Project setup and execution steps complete."
-# REM Remember to run the actual Python files after creating their content!
+# REM Remember to run the actual Python files after creating their content!# 1P-QR-code-detection
