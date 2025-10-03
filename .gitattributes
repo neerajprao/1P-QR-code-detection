@@ -1,8 +1,18 @@
-*.zip filter=lfs diff=lfs merge=lfs -text
-file filter=lfs diff=lfs merge=lfs -text
-*.dat filter=lfs diff=lfs merge=lfs -text
-\# filter=lfs diff=lfs merge=lfs -text
-Example filter=lfs diff=lfs merge=lfs -text
-for filter=lfs diff=lfs merge=lfs -text
-a filter=lfs diff=lfs merge=lfs -text
-data filter=lfs diff=lfs merge=lfs -text
+# ----------------------------------------------------------------------
+# Git LFS Tracking Configuration
+# These are large, version-controlled files (e.g., data, models, assets)
+# ----------------------------------------------------------------------
+
+# Large Datasets / Model Files
+*.csv       filter=lfs diff=lfs merge=lfs -text
+*.pkl       filter=lfs diff=lfs merge=lfs -text
+*.h5        filter=lfs diff=lfs merge=lfs -text
+*.pt        filter=lfs diff=lfs merge=lfs -text
+
+# Media / Design Assets
+*.mp4       filter=lfs diff=lfs merge=lfs -text
+*.psd       filter=lfs diff=lfs merge=lfs -text
+*.zip       filter=lfs diff=lfs merge=lfs -text
+
+# Example for a specific folder of large files
+assets/models/** filter=lfs diff=lfs merge=lfs -text

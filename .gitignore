@@ -1,0 +1,13 @@
+# 1. Ensure the directory is removed from your file system (if possible, 
+#    or just remove it from tracking if you need to keep the local files)
+# If the large folder 'qr' is your virtual environment, it's safe to delete:
+# rm -rf qr
+
+# 2. Tell Git to stop tracking the files that were already committed:
+git rm -r --cached .
+
+# 3. Re-add everything (Git will respect the new .gitignore rules):
+git add .
+
+# 4. Commit the cleaned index and the .gitignore file:
+git commit -m "Cleaned repository of dependency files and added .gitignore"
